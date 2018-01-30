@@ -1,0 +1,32 @@
+<label>edit</label>
+<label><%= notice %></label>
+<% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %>errors occurred.</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+<%= form_with(model: @contact, local: true) do |form| %>
+
+
+
+  <div class="">
+    <%= form.label :name %>
+    <%= form.text_field :name, value:@contact.name  %>
+  </div>
+  <div class="">
+    <%= form.label :email %>
+    <%= form.text_field :email, value:@contact.email %>
+  </div>
+  <div class="">
+    <%= form.label :content %>
+    <%= form.text_field :content, value:@contact.content  %>
+  </div>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,21 @@
+<label><%= notice %></label>
+
+<h1>List of All contancts</h1><%= link_to 'New contact', new_contact_path %>
+<br><br>
+<table>
+  <tr>
+    <th>Name</th><th>Email</th>
+    <th>Content</th></th>
+  </tr>
+
+<% @contact.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.content %></td>
+  
+    <td><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></td>
+    <td ><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
