@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     # get 'blogs/index'
-  get    '/'             ,to: 'contacts#index'
-  get    '/test'         ,to: 'contacts#testi'
+  # get    '/'             ,to: 'contacts#index'
+  # get    '/test'         ,to: 'contacts#testi'
 #   post   '/contacts'     ,to: 'contacts#createcontact'
 #   get    '/contacts'     ,to: 'contacts#newcontact'
 #   get    '/contacts/:id'         ,to: 'contacts#contact_edit' ,as: 'edit'
