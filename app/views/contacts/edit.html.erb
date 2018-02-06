@@ -1,32 +1,139 @@
-<label>edit</label>
-<label><%= notice %></label>
-<% if @contact.errors.any? %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/nomalize.css">
+    <link rel="stylesheet" href="css/css_exam02.css">
+    <title>jls-profile</title>
+  </head>
+  <body>
+     <div class="container">
+      
+       <div class="head">
+
+         <h2 class="pname">jules ntaganda</h2 > 
+        <h1 class="plog">Personal</h1>
+        <h4 class="plog" style="padding-left: 50px;">Profile</h4> 
+
+        <!--<img src="/images/rlpic.png" >-->
+        <%= image_tag "rlpic.png" %></div>
+    <header class="header clearfix">
+     
+
+    
+    <nav>
+       <ul class="top_menu">
+         <li><a href="#">About us </a></li>
+          <li><a href="#">Contant us</a></li>
+           <li><a href="#">Profile</a></li>
+          <li class="select"><a href="#">Home</a></li>
+         
+        </ul>
+      </nav>
+
+</header>
+
+    <div class="wrapper clearfix">
+
+
+  
+
+  <article class="content">
+    <center>
+        
+         
+
+  <section class="post-content ">
+     
+      <dl id="accordion">
+        <dt>ALL BLOGS</dt>
+    <dt> <label style=" color:green;"><%= notice %></label></dt>
+    <% @contacts.each do |contact| %>
+    <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
+        <%= contact.name %> (<%= contact.email %>)
+        <label style="float:right"><button><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
+        <button><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
+        </label></p></label></dt>
+    <dd><%= contact.content %><br><br></dd>
+ 
+    
+ 
+<% end %>
+    
+
+       </section>
+
+</center>
+   
+  
+</article>
+
+<aside class="side_menu">
+
+
+  
+  <dl id="accordion">
+    <dt>Add your Blog</dt>
+    <dd>
+    
+    <% if @contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @contact.errors.count %>errors occurred.</h2>
+      <h2 style="color:red;"><%= @contact.errors.count %>errors occurred.</h2>
       <ul>
       <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li style="color:red;"><%= msg %></li>
       <% end %>
       </ul>
     </div>
 <% end %>
+    
+    <%= form_with(model: @contact, local: true) do |form| %>
 
-
-<%= form_with(model: @contact, local: true) do |form| %>
-
-
-
-  <div class="">
-    <%= form.label :name %>
-    <%= form.text_field :name, value:@contact.name  %>
-  </div>
-  <div class="">
-    <%= form.label :email %>
-    <%= form.text_field :email, value:@contact.email %>
-  </div>
-  <div class="">
-    <%= form.label :content %>
-    <%= form.text_field :content, value:@contact.content  %>
-  </div>
-  <%= form.submit %>
+  <table class="contact_tb">
+  <tr>
+    <th>Names :</th>
+    <td> <%= form.text_field :name %></td>
+  </tr>
+  <tr>
+    <th>Email :</th>
+    <td><%= form.text_field :email %></td>
+  </tr>
+  
+  <tr>
+    <th>Content :</th>
+     <td><%= form.text_area :content %></td>
+  </tr>
+  
+</table>
+<center><%= form.submit "Update Blog" %></center>
+  
+    
 <% end %>
+  
+  
+  
+  
+
+    </dd>
+  </dl>
+  <p class="banner">
+   
+     <%= image_tag "chery tree.gif" %>
+      
+      
+    
+  </p>
+  
+</aside>
+
+   <footer class="footer">
+      <p>Copyright © 2018 JULES All RIGHTS RESERVED.</p>
+   </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+ <script type="text/javascript" src="./js/main.js">
+  </script>
+  </body>
+</html>

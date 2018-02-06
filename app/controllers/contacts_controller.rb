@@ -1,8 +1,17 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  def testi
+   
+    @contact = Contact.new
+    @contacts=Contact.all
+    render 'test'
+    
+     
+  end
   
   def index
-     @contact=Contact.all
+    @contact = Contact.new
+     @contacts=Contact.all
     # binding.pry
   end
   def new
@@ -12,12 +21,15 @@ class ContactsController < ApplicationController
     
   end
   def create
+     @contacts=Contact.all
      @contact = Contact.new(contact_params)
      if @contact.save
-       redirect_to new_contact_path, notice: "***You have created new contact successfully!!***"
+      # redirect_to new_contact_path, notice: "***You have created new contact successfully!!***"
+       redirect_to contacts_path, notice: "***successfully created!!***"
     
        else
-       render 'new'
+      # render 'new'
+       render 'index'
      end
      
   end
@@ -25,19 +37,22 @@ class ContactsController < ApplicationController
   #   @blog = Blog.find(params[:id])
   # end
   def edit
+     @contacts=Contact.all
     # @contact = Contact.find(params[:id])
   end
   def update
+    @contacts=Contact.all
   # @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      redirect_to contacts_path, notice: " contact successfully updated！"
+      redirect_to contacts_path, notice: "***successfully updated!!***"
     else
       render 'edit'
     end
   end
   def destroy
   @contact.destroy
-  redirect_to contacts_path, notice: "You have deleted the contact!"
+   redirect_to contacts_path, notice: "You have deleted the blog!"
+  # redirect_to test_path, notice: "You have deleted the contact!"
   end
   
   private

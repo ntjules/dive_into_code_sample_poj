@@ -1,0 +1,204 @@
+<% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %>errors occurred.</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+<%= form_with(model: @contact, local: true) do |form| %>
+
+
+
+  <div class="">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div class="">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/nomalize.css">
+    <link rel="stylesheet" href="css/css_exam02.css">
+    <title>jls-profile</title>
+  </head>
+  <body>
+     <div class="container">
+      
+       <div class="head">
+
+         <h2 class="pname">jules ntaganda</h2 > 
+        <h1 class="plog">Personal</h1>
+        <h4 class="plog" style="padding-left: 50px;">Profile</h4> 
+
+        <!--<img src="/images/rlpic.png" >-->
+        <%= image_tag "rlpic.png" %></div>
+    <header class="header clearfix">
+     
+
+    
+    <nav>
+       <ul class="top_menu">
+         <li><a href="#">About us </a></li>
+          <li><a href="#">Contant us</a></li>
+           <li><a href="#">Profile</a></li>
+          <li class="select"><a href="#">Home</a></li>
+         
+        </ul>
+      </nav>
+
+</header>
+
+    <div class="wrapper clearfix">
+
+
+  
+
+  <article class="content">
+    <center>
+        
+           <section class="post-content hide ">
+      <h2><u>who we are</u></h2> 
+      <p>I am a dive_into_code student</p>
+    
+
+       </section>
+        
+        <section class="post-content hide ">
+      <h2><u>Contant us on</u></h2> 
+      <p>Tel:0788359150</p>
+      <p>Email:ntjules@gmail.com</p>
+
+       </section>
+
+        <section class="post-content hide">
+      <h2><u>bibiography</u></h2> I'am jules ntaganda , a Rwandan by nationality I hold 
+a Bachelor degree in Informatiion Technology from university of rwanda.<br><br><br>
+
+since in high school IT was my hoby career, the main reason why I keep studying programming it is simple because  it is leading in IT and even the whole world in general.<br><br><br>
+
+Progamming will help me to change my own life and family financially and widen my mind too, I want to be among those who live by programming
+
+
+</section> 
+
+  <section class="post-content ">
+      <h2><u>Welcome</u></h2> 
+      
+      <p>this Jules study place</p>
+      <dl id="accordion">
+    
+    <% @contacts.each do |contact| %>
+    <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
+        <%= contact.name %> (<%= contact.email %>)
+        <label style="float:right"><button><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
+        <button><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
+        </label></p></label></dt>
+    <dd><%= contact.content %><br><br></dd>
+ 
+    
+ 
+<% end %>
+    
+
+       </section>
+
+</center>
+   
+  
+</article>
+
+<aside class="side_menu">
+<label><%= notice %></label>
+
+  
+  <dl id="accordion">
+    <dt>Add your Comment</dt>
+    <dd>
+    
+    
+    
+    <%= form_with(model: @contact, local: true) do |form| %>
+
+
+
+  <div class="">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div class="">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+  
+  
+  <table class="contact_tb">
+  <tr>
+    <th>Names :</th>
+    <td><input type="text" name=""></td>
+  </tr>
+  <tr>
+    <th>Emails :</th>
+    <td><input type="text" name=""></td>
+  </tr>
+  <tr>
+    <th>Gender :</th>
+    <td><input type="radio" name="gender" value="male" />Male<input type="radio" name="gender" value="male" /> Female</td>
+   
+  </tr>
+  <tr>
+    <th>Message :</th>
+    <td><textarea rows="" cols=""></textarea></td>
+  </tr>
+  
+</table>
+<center><input type="submit" value="Submit" class="btn"></center>
+  
+  
+  
+  
+  
+  
+
+    </dd>
+  </dl>
+  <p class="banner">
+   
+    
+      
+    
+  </p>
+  
+</aside>
+
+   <footer class="footer">
+      <p>Copyright © 2017 JULES All RIGHTS RESERVED.</p>
+   </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+ <script type="text/javascript" src="./js/main.js">
+  </script>
+  </body>
+</html>
