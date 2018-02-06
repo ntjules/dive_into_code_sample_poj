@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     # get 'blogs/index'
-  # get    '/'             ,to: 'contacts#index'
+  get    '/'             ,to: 'contacts#index'
   # get    '/test'         ,to: 'contacts#testi'
 #   post   '/contacts'     ,to: 'contacts#createcontact'
 #   get    '/contacts'     ,to: 'contacts#newcontact'
