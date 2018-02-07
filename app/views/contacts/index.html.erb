@@ -51,9 +51,9 @@
     <% @contacts.each do |contact| %>
     <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
         <%= contact.name %> (<%= contact.email %>)
-        <label style="float:right"><button><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
-        <button><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
-        </label></p></label></dt>
+       <button style="float:right"><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
+        <button style="float:right"><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
+        </dt>
     <dd><%= contact.content %><br><br></dd>
  
     

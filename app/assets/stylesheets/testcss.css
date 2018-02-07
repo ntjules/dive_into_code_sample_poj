@@ -4,7 +4,10 @@ html {
 }
 body{
   height: 100%;
-  background-image:url("bg.jpg");
+  background-color: black;
+  background-image:url("bg2.jpg");
+  
+    background-size:cover;
 }
 nav{
   text-align: center;
