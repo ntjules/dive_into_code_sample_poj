@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,7 +38,11 @@
          
         </ul>
       </nav>
-
+<%= search_form_for @search do |f| %>
+ <label style="color:white;font-size:2em;"><%= f.label :name_cont %></label> 
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
 </header>
 
     <div class="wrapper clearfix">
@@ -48,7 +60,7 @@
       <dl id="accordion">
         <dt>ALL BLOGS</dt>
     <dt> <label style=" color:green;"><%= notice %></label></dt>
-    <% @contacts.each do |contact| %>
+    <% @scontacts.each do |contact| %>
     <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
         <%= contact.name %> (<%= contact.email %>)
        <button style="float:right"><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>

@@ -10,6 +10,9 @@ class ContactsController < ApplicationController
   end
   
   def index
+    @search = Contact.search(params[:q])
+      @scontacts = @search.result
+
     @contact = Contact.new
      @contacts=Contact.all
     # binding.pry
