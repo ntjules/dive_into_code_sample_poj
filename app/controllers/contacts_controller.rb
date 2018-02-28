@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.pdf {render template:'contacts/report',pdf:'report' , header: { right: '[page] of [topage]' }}
+      format.pdf {render template:'contacts/report',pdf:'report' , header: { right: '[page] of [topage]' , encoding:'UTF-8' }}
       
     end
     
