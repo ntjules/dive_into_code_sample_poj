@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <%= wicked_pdf_stylesheet_link_tag 'testcss' %>
+    
+  </head>
+  <body>
+    <h1>DIVE INTO CODE</h1>
+    <p>HELLO WORLD</p>
+    <section class="post-content ">
+     
+      <dl id="accordion">
+        <dt>ALL BLOGS</dt>
+    <dt> <label style=" color:green;"><%= notice %></label></dt>
+    <% @scontacts.each do |contact| %>
+    <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
+        <%= contact.name %> (<%= contact.email %>)
+       
+        </dt>
+    <dd><%= contact.content %><br><br></dd>
+ 
+    
+ 
+<% end %>
+    
+
+       </section>
+  </body>
+</html>

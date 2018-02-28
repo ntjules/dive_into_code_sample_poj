@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :development, :test do
+  gem "rails-erd"
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -12,6 +13,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'ransack'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record

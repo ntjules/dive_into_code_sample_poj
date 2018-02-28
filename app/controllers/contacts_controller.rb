@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
     @contacts=Contact.all
     render 'test'
     
+    
      
   end
   
@@ -16,6 +17,13 @@ class ContactsController < ApplicationController
     @contact = Contact.new
      @contacts=Contact.all
     # binding.pry
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf {render template:'contacts/report',pdf:'report' , header: { right: '[page] of [topage]' }}
+      
+    end
+    
   end
   def new
     
