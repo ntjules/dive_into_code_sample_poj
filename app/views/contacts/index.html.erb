@@ -38,14 +38,15 @@
          
         </ul>
       </nav>
+      <div>
 <%= search_form_for @search do |f| %>
  <label style="color:white;font-size:2em;"><%= f.label :name_cont %></label> 
   <%= f.search_field :name_cont %>
   <%= f.submit %>
 <% end %>
-
+</div>
 </header>
-<button><%= link_to "print all blogs", 'contacts.pdf'%></button>
+<!--<div><%= link_to "print all blogs", 'contacts.pdf', target: :_blank, class:"btn"%></div>-->
 
     <div class="wrapper clearfix">
 
