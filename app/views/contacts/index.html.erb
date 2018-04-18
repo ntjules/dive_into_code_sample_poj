@@ -1,4 +1,13 @@
-
+    <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2 style="color:red;"><%= @contact.errors.count %>errors occurred.</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li style="color:red;"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
 
 
 
@@ -16,74 +25,89 @@
   </head>
   <body>
      <div class="container">
+         <div class="row">
+         
       
-       <div class="head">
+       <div class="head col-md-12">
 
-         <h2 class="pname">jules ntaganda</h2 > 
-        <h1 class="plog">Personal</h1>
         <h4 class="plog" style="padding-left: 50px;">Profile</h4> 
 
         <!--<img src="/images/rlpic.png" >-->
         <%= image_tag "rlpic.png" %></div>
-    <header class="header clearfix">
+ <div class='col-md-4'>   
+</div> 
+<div class = "col-md-8 col-xs-12">
+          <nav class="navbar ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+           <!--<span class="icon-bar">MENU</span>-->
+          <!--<span class="glyphicon glyphicon-menu-hamburger blue"></span>-->
+        <span class="sr-only">MENU</span>
+       
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--<a class="navbar-brand" href="#">MENU </a>-->
+
      
-
-    
-    <nav>
-       <ul class="top_menu">
-         <li><a href="#">About us </a></li>
-          <li><a href="#">Contant us</a></li>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav ">
+           <li class="select"><a href="#">Home</a></li>
            <li><a href="#">Profile</a></li>
-          <li class="select"><a href="#">Home</a></li>
-         
-        </ul>
-      </nav>
-      <div>
-<%= search_form_for @search do |f| %>
- <label style="color:white;font-size:2em;"><%= f.label :name_cont %></label> 
-  <%= f.search_field :name_cont %>
-  <%= f.submit %>
-<% end %>
-</div>
-</header>
-<!--<div><%= link_to "print all blogs", 'contacts.pdf', target: :_blank, class:"btn"%></div>-->
-
-    <div class="wrapper clearfix">
-
-
+           <li><a href="#">Contant us</a></li>
+           <li><a href="#">About us </a></li>
+        
+        
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+</div> <!--end nav col-->
+</div> <!--end row-->
   
 
-  <article class="content">
-    <center>
-        
-         
+<!--<div><%= link_to "print all blogs", 'contacts.pdf', target: :_blank, class:"btn"%></div>-->
 
-  <section class="post-content ">
+    <!--<div class="wrapper clearfix">-->
+
+    <div class= "row" style="padding-bottom:10%" >
+  
+ <div class= "col-md-6 text-center clearfix">
+       
      
       <dl id="accordion">
         <dt>ALL BLOGS</dt>
     <dt> <label style=" color:green;"><%= notice %></label></dt>
-    <% @scontacts.each do |contact| %>
-    <dt style="height:25px;padding-top:0px;"><label style="font-size: 25px;">
-        <%= contact.name %> (<%= contact.email %>)
-       <button style="float:right"><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
-        <button style="float:right"><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
+    <% @contacts.each do |contact| %>
+    <dt >
         </dt>
-    <dd><%= contact.content %><br><br></dd>
+    <dd><label style="font-size: 25px;">
+        <%= contact.name %> <!--(<%= contact.email %>)--> </label>
+      
+        <button style="float:right"><%= link_to "Edit", edit_contact_path(contact.id) ,data: { confirm: 'Are you sure?' }%></button>
+        <button style="float:right"><%= link_to link_to 'Delete', contact_path(contact.id), method: :delete ,data: { confirm: 'Are you sure?' } %></button>
+       
+       <h4> <%= contact.content %></h4>
+        </dd>
  
     
  
 <% end %>
     
 
-       </section>
-
-</center>
-   
   
-</article>
 
-<aside class="side_menu">
+
+   
+
+</div>
+
+<aside class="col-md-4  col-md-offset-1">
 
 
   
@@ -102,12 +126,34 @@
     </div>
 <% end %>
     
-    <%= form_with(model: @contact, local: true) do |form| %>
+<%= form_with(model: @contact, local: true) do |form| %>
+    
+       <div class="form-group" >
+        <%= form.label :name, "Tittle:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :email, "Email:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= form.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+    
+    <div class="form-group">
+        <%= form.label :content, "Content:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= form.text_area :content, class: "form-control" %>
+        </div>
+      </div>
 
-  <table class="contact_tb">
+
+  <!--<table class="contact_tb">
   <tr>
     <th>Names :</th>
-    <td> <%= form.text_field :name %></td>
+    <td> <%= form.text_field :name, style: 'float: left; width: 100%; color:black; ' %></td>
   </tr>
   <tr>
     <th>Email :</th>
@@ -119,8 +165,9 @@
     <td><%= form.text_area :content %></td>
   </tr>
   
-</table>
-<center><%= form.submit "Create Blog" %></center>
+</table>-->
+<!--<center><%= form.submit "Create Blog" %></center>-->
+<center><%= form.submit "Submit", class: "btn btn-default btn-primary " %> </center>
   
     
 <% end %>
@@ -140,11 +187,11 @@
   </p>
   
 </aside>
-
+</div>
    <footer class="footer">
       <p>Copyright © 2018 JULES All RIGHTS RESERVED.</p>
    </footer>
-</div>
+</div> <!--end row-->
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -152,18 +199,6 @@
   </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

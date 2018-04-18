@@ -11,11 +11,11 @@ class ContactsController < ApplicationController
   end
   
   def index
-    @search = Contact.search(params[:q])
-      @scontacts = @search.result
+    # @search = Contact.search(params[:q])
+      # @scontacts = @search.result
 
     @contact = Contact.new
-     @contacts=Contact.all
+    @contacts=Contact.all
     # binding.pry
     respond_to do |format|
       format.html
@@ -40,7 +40,7 @@ class ContactsController < ApplicationController
     
        else
       # render 'new'
-       render 'index'
+      render 'index'
      end
      
   end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   # resources :blogs #   // for all seven normal actions
   resources :contacts
+  resources :blogs
   # resources :tweetings
   
   
