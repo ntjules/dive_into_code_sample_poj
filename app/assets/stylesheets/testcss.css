@@ -127,7 +127,7 @@ border-bottom:5px solid red;
 /*}*/
 
 .head{
-  height: 130px;
+  height: auto;
  
   background-image:url("unnamed.jpg");
   border-radius: 40px 40px 0px 0px;
@@ -139,9 +139,9 @@ border-bottom:5px solid red;
   border-radius: 8em;
 } 
 .plog{ 
-  position: absolute;
+  /*position: absolute;*/
   padding-left: 25px;
-  color: #FFF;
+  /*color: #FFF;*/
   color:red;
   font-size: 5em;
     }
