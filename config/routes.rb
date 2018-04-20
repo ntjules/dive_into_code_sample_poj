@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+ resources :sessions, only: [:new, :create, :destroy]
+
     # get 'blogs/index'
   get    '/'             ,to: 'contacts#index'
+  get    '/contacts/:id'         ,to: 'contacts#index' ,as: 'main_app'
   # get    '/test'         ,to: 'contacts#testi'
 #   post   '/contacts'     ,to: 'contacts#createcontact'
 #   get    '/contacts'     ,to: 'contacts#newcontact'
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
 #   put    '/contacts/:id'         ,to: 'contacts#contact_update' ,as: 'update'
   
   # resources :blogs #   // for all seven normal actions
+  # resources :users, only: [:new]
+  resources :users
   resources :contacts
   resources :blogs
   # resources :tweetings
