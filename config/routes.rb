@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
  resources :sessions, only: [:new, :create, :destroy]
 
+
+
+
     # get 'blogs/index'
   get    '/'             ,to: 'blogs#index' ,as: 'home'
   get    '/my_fav'    ,to: 'blogs#my_fav' ,as: 'my_fav'
@@ -44,6 +47,10 @@ Rails.application.routes.draw do
   # patch  '/blogs/:id'      ,to: 'blogs#update'
   # delete '/blogs/:id'      ,to: 'blogs#destroy'
   
+  # if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  # end
   
 
   end
+

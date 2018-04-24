@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
      
     @blog = Blog.new
     @blogs=Blog.all.order('id DESC')
+    
    
     # binding.pry
     
@@ -34,8 +35,9 @@ class BlogsController < ApplicationController
       @blog = Blog.new(blog_params)
       @blog.user = current_user
      if @blog.save
-      redirect_to blogs_path, Notice: "You have created new blog!"
-    
+       
+      redirect_to blogs_path, notice: "You have created new blog!"
+    BlogMailer.blog_mail(current_user.email,@blog).deliver
      
       else
       # render 'new'
