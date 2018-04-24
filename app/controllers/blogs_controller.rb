@@ -9,6 +9,12 @@ class BlogsController < ApplicationController
     # binding.pry
     
   end
+  
+  
+  def my_fav
+     @blog = Blog.new
+    @fav=current_user.favorite_blogs.order('id DESC')
+  end
   def new
     @blog = Blog.new
      

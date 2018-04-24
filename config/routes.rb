@@ -2,7 +2,8 @@ Rails.application.routes.draw do
  resources :sessions, only: [:new, :create, :destroy]
 
     # get 'blogs/index'
-  get    '/'             ,to: 'blogs#index'
+  get    '/'             ,to: 'blogs#index' ,as: 'home'
+  get    '/my_fav'    ,to: 'blogs#my_fav' ,as: 'my_fav'
   # get    '/contacts/:id'         ,to: 'contacts#index' ,as: 'main_app'
    get    '/contacts/:id'         ,to: 'blogs#index' ,as: 'main_app'
   # get    '/test'         ,to: 'contacts#testi'
