@@ -1,8 +1,13 @@
 class BlogsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   def index
-    @blogs=Blog.all
+     
+    @blog = Blog.new
+    @blogs=Blog.all.order('id DESC')
+   
     # binding.pry
+    
   end
   def new
     @blog = Blog.new
@@ -18,28 +23,33 @@ class BlogsController < ApplicationController
     # Blog.create(blog_params)#read from method
     # redirect_to "/blogs/new"
     # redirect_to blogs_new_path
-    
+    @blogs=Blog.all.order('id DESC')
     
       @blog = Blog.new(blog_params)
+      @blog.user = current_user
      if @blog.save
       redirect_to blogs_path, Notice: "You have created new blog!"
     
      
       else
-      render 'new'
+      # render 'new'
+       render 'index'
   
      end
     
    
   end
   def show
+     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @blog = Blog.find(params[:id])
   end
   def edit
     # @blog = Blog.find(params[:id])
+     @blogs=Blog.all.order('id DESC')
   end
   def update
     # @blog = Blog.find(params[:id])
+    @blogs=Blog.all.order('id DESC')
     if @blog.update(blog_params)
       redirect_to blogs_path, notice: "You have edited this blog！"
     else
