@@ -23,9 +23,9 @@
          
       
        <div class=" col-md-12 head">
-           <label class = "plog">Profile</label><%= image_tag "rlpic.png" %>
-             <p class="h2">Welcome <%= current_user.name %></p>
-        <!--<img src="/assets/rlpic.png" alt="profile pic" />-->
+             <label class = "plog">Profile</label> <% if current_user.image_url.present? %>
+          <%= image_tag current_user.image_url  %>  <% else %> <%= image_tag "avatar.png" %>  <% end %>
+           <p class="h2">Welcome <%= current_user.name %></p>
 
        
            </div>
@@ -81,7 +81,8 @@
     <dd><label style="font-size: 25px;">
         <%= blog.title %> </label>
         
-        
+          <% if blog.image_url.present? %>
+        <img>  <%= image_tag blog.image_url, :class => "style_image"  %><% end %>
    
         
          <% if blog.user == current_user %>

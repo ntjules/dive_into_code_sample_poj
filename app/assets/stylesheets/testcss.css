@@ -259,3 +259,10 @@ border-bottom:5px solid red;
 .navbar-toggle, .icon-bar {
     border:1px solid orange;
 }
+
+
+.style_image {
+  border-right: 1px solid red;
+  float: left;
+  max-height: 85px;
+}

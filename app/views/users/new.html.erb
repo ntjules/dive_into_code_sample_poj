@@ -39,6 +39,9 @@
         <label for="inputPassword">  <%= f.label :password_confirmation %></label>
         <%= f.password_field :password_confirmation, class:"form-control" %>
     </div>
+    <%= f.label :image %>
+  <%= f.file_field :image, id: :user_image %>
+  <%= f.hidden_field :image_cache %>
     
    <%= f.submit "Create " ,class:"btn btn-primary" %><br>
     <span class="label label-primaryj" style= "float:right;font-size: 20px;font-color:white;"><%= link_to "Sign in", new_session_path %></span>
