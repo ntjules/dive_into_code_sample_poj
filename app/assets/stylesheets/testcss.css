@@ -265,5 +265,18 @@ border-bottom:5px solid red;
 .style_image {
   border-right: 1px solid red;
   float: left;
-  max-height: 85px;
+  /*max-height:350px;*/
+  width:100%;
 }
+
+.bloguserpic
+{
+  float: left;
+  height: 60px;
+  max-width: 60px;
+  border-radius: 8em;
+}
+
+
+
+

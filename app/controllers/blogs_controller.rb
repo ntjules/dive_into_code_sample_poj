@@ -4,8 +4,10 @@ class BlogsController < ApplicationController
   def index
      
     @blog = Blog.new
-    @blogs=Blog.all.order('id DESC')
-    
+    # @blogs=Blog.all.order('id DESC')
+    @blogs=Blog.includes(:user).all.order('id DESC')
+    # @blogs=Blog.joins("INNER JOIN users ON users.id = blogs.user_id").all
+  # @blogss=User.joins(:blogs).pluck('users.name,users.image as u_img, blogs.id, blogs.title as title, blogs.content,blogs.image')
    
     # binding.pry
     

@@ -1,4 +1,6 @@
 
+
+  
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,10 +8,23 @@
     <link rel="stylesheet" href="css/nomalize.css">
     <link rel="stylesheet" href="css/css_exam02.css">
     <title>jls-profile</title>
+   
   </head>
   <body>
      <div class="container">
+       <div class="col-md-6" style="padding-left: 0px;  padding-right: 0px;">
+        <!--<img src="images/food1.jpg" class="img-responsive">-->
+        
+    </div>
          <div class="row">
+           
+     
+    
+    
+    
+    
+    
+    
          
       
        <div class=" col-md-12 head">
@@ -62,21 +77,45 @@
     <!--<div class="wrapper clearfix">-->
 
     <div class= "row" style="padding-bottom:10%" >
+      
+      
+ 
+
   
- <div class= "col-md-6 text-center clearfix">
+ <div class= "col-md-8 text-center clearfix">
+     
+     
+     
+     
+     
+     
+     
        
      
-      <dl id="accordion">
+      <dl id="accordion" >
         <dt>ALL BLOGS</dt>
     <dt> <label style=" color:green;background-color:white;"><%= notice %></label></dt>
       <% @blogs.each do |blog| %>
     <dt >
         </dt>
-    <dd><label style="font-size: 25px;">
+    <dd class= "col-md-12"><label style="font-size: 25px;">
         <%= blog.title %> </label>
+        <!--<%= image_tag "unnamed.jpg", class: "img-responsive style_image" %>-->
+       <% if blog.image_url.present? %>
+         <%= image_tag blog.image_url, :class => " img-responsive style_image"  %>
+        <% end %>
         
-        <% if blog.image_url.present? %>
-        <img>  <%= image_tag blog.image_url, :class => "style_image"  %><% end %>
+        
+        <div class = "row">
+          <div class = "col-md-5">
+            <% if blog.user.image_url.present? %>
+          <%= image_tag blog.user.image_url, :class => "img-responsive bloguserpic"  %>
+          <% end %>
+         <label style ="float:left;padding-top:10%;" class ="text-left"><%= blog.user.name%></label>
+          </div>
+           <div class = "col-md-7 text-right"><h4> <%= blog.content %></h4></div>
+        </div>
+        
         
    
         
@@ -87,7 +126,8 @@
       <label style="float:right;font-size: 25px;"><%= link_to 'details', blog_path(blog.id), class: 'label label-info label-small'%></label> 
      
       <% end %>
-       <h4> <%= blog.content %></h4>
+       
+       
         </dd>
 <% end %>
     
@@ -98,9 +138,9 @@
    
 
 </div>
-<aside class="col-md-4  col-md-offset-1">
+<!--<aside class="col-md-4  col-md-offset-1">-->
 
-
+<aside class="col-md-4">
   
   <dl id="accordion">
     <dt>Add your Blog</dt>
@@ -176,6 +216,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
  <script type="text/javascript" src="./js/main.js">
   </script>
+  
   </body>
 </html>
 
